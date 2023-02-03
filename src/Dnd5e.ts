@@ -1,0 +1,104 @@
+export class Dnd5e implements SystemApi {
+
+    get version() {
+        return 1;
+    }
+
+    get id() {
+        return "dnd5e";
+    }
+
+    async actorRollSkill(actor, skillId):Promise<any> {
+        return await actor.rollSkill(skillId);
+    }
+
+    async actorRollAbility(actor, abilityId): Promise<any> {
+        return await actor.rollAbilityTest(abilityId);
+    }
+
+    actorCurrenciesGet(actor):Currencies {
+        return actor["system"].currency;
+    }
+
+    async actorCurrenciesAdd(actor, currencies: Currencies): Promise<void> {
+        const actorCurrencies = this.actorCurrenciesGet(actor);
+        const addValue = beaversSystemInterface.currenciesToLowestValue(currencies);
+        const actorValue = beaversSystemInterface.currenciesToLowestValue(actorCurrencies);
+        const result = actorValue + addValue;
+        if (result < 0) {
+            throw new Error("negative money");
+        }
+        const resultCurrencies = beaversSystemInterface.currencyToCurrencies(result);
+        await actor.update({system: {currency: resultCurrencies}});
+    }
+
+    actorSheetAddTab(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string): void {
+        const tabs = $(html).find('.tabs[data-group="primary"]');
+        const tabItem = $('<a class="item" data-tab="' + tabData.id + '">' + tabData.label + '</a>');
+        tabs.append(tabItem);
+        const body = $(html).find(".sheet-body");
+        const tabContent = $('<div class="tab" data-group="primary" data-tab="' + tabData.id + '"></div>');
+        body.append(tabContent);
+        tabContent.append(tabBody);
+    }
+
+    get configSkills(): SkillConfig[] {
+        return Object.entries(game["dnd5e"].config.skills)
+            .map(skills => {
+                // @ts-ignore
+                return {id: skills[0], label: skills[1].label as string};
+            })
+    }
+
+    get configAbilities(): AbilityConfig[] {
+        return Object.entries(game["dnd5e"].config.abilities).map(ab => {
+            return {id: ab[0], label: ab[1] as string};
+        });
+    }
+
+    get configCurrencies(): CurrencyConfig[] {
+        return [
+            {
+                id: "pp",
+                factor: 1000,
+                label: game["dnd5e"].config.currencies.pp.label
+            },
+            {
+                id: "gp",
+                factor: 100,
+                label: game["dnd5e"].config.currencies.gp.label
+            },
+            {
+                id: "ep",
+                factor: 50,
+                label: game["dnd5e"].config.currencies.ep.label
+            },
+            {
+                id: "sp",
+                factor: 10,
+                label: game["dnd5e"].config.currencies.sp.label
+            },
+            {
+                id: "cp",
+                factor: 1,
+                label: game["dnd5e"].config.currencies.cp.label
+            }
+        ]
+    }
+
+    get configCanRollAbility():boolean {
+        return true;
+    }
+    get configLootItemType(): string {
+        return "loot";
+    }
+
+    get itemPriceAttribute(): string {
+        return "system.price";
+    }
+
+    get itemQuantityAttribute(): string {
+        return "system.quantity";
+    }
+
+}

@@ -1,0 +1,41 @@
+{
+    "title": "Beaver's System Adaption dnd5e",
+    "description": "dnd5e implementation for Beaver's System Interface",
+    "id": "bsa-dnd5e",
+    "version": "1.0.0",
+    "authors": [
+      {
+        "name": "angryBeaver",
+        "url": "https://github.com/angrybeaver"
+      }
+    ],
+    "languages": [
+    ],
+    "esmodules": [
+      "src/main.js"
+    ],
+    "styles": [
+
+    ],
+    "packs": [
+    ],
+    "url": "https://github.com/AngryBeaver/bsa-dnd5e",
+    "manifest": "https://github.com/AngryBeaver/bsa-dnd5e/releases/latest/download/module.json",
+    "download": "https://github.com/AngryBeaver/bsa-dnd5e/releases/latest/download/bsa-dnd5e.zip",
+    "relationships": {
+      "systems": [
+        {
+          "id": "dnd5e",
+          "type": "system",
+          "compatibility": {
+            "minimum": "2.0.0",
+            "verified": "2.1.0"
+          }
+        }
+      ]
+    },
+    "compatibility": {
+      "minimum": "10",
+      "verified": "10"
+    }
+  }
