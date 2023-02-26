@@ -8,12 +8,28 @@ export class Dnd5e implements SystemApi {
         return "dnd5e";
     }
 
-    async actorRollSkill(actor, skillId):Promise<any> {
-        return await actor.rollSkill(skillId);
+    async actorRollSkill(actor, skillId):Promise<Roll> {
+        let roll = await actor.rollSkill(skillId);
+        return this.fixReadySetRoll(roll);
     }
 
-    async actorRollAbility(actor, abilityId): Promise<any> {
-        return await actor.rollAbilityTest(abilityId);
+    async actorRollAbility(actor, abilityId): Promise<Roll> {
+        let roll =  await actor.rollAbilityTest(abilityId);
+        return this.fixReadySetRoll(roll);
+    }
+
+    async actorRollTool(actor, item): Promise<Roll> {
+        let roll = await item.rollToolCheck();
+        return this.fixReadySetRoll(roll);
+    }
+
+    fixReadySetRoll(roll){
+        if(roll.total === undefined){
+            if(roll.fields !== undefined && roll.fields[2] !== undefined ){
+                roll =  roll.fields[2][1]?.roll
+            }
+        }
+        return roll;
     }
 
     actorCurrenciesGet(actor):Currencies {
