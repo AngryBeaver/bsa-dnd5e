@@ -1,7 +1,7 @@
 export class Dnd5e implements SystemApi {
 
     get version() {
-        return 1;
+        return 2;
     }
 
     get id() {
@@ -36,16 +36,8 @@ export class Dnd5e implements SystemApi {
         return actor["system"].currency;
     }
 
-    async actorCurrenciesAdd(actor, currencies: Currencies): Promise<void> {
-        const actorCurrencies = this.actorCurrenciesGet(actor);
-        const addValue = beaversSystemInterface.currenciesToLowestValue(currencies);
-        const actorValue = beaversSystemInterface.currenciesToLowestValue(actorCurrencies);
-        const result = actorValue + addValue;
-        if (result < 0) {
-            throw new Error("negative money");
-        }
-        const resultCurrencies = beaversSystemInterface.currencyToCurrencies(result);
-        await actor.update({system: {currency: resultCurrencies}});
+    async actorCurrenciesStore(actor, currencies: Currencies): Promise<void> {
+        await actor.update({system: {currency: currencies}});
     }
 
     actorSheetAddTab(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string): void {
