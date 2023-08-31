@@ -68,33 +68,15 @@ export class Dnd5e implements SystemApi {
     }
 
     get configCurrencies(): CurrencyConfig[] {
-        return [
-            {
-                id: "pp",
-                factor: 1000,
-                label: game["dnd5e"].config.currencies.pp.label
-            },
-            {
-                id: "gp",
-                factor: 100,
-                label: game["dnd5e"].config.currencies.gp.label
-            },
-            {
-                id: "ep",
-                factor: 50,
-                label: game["dnd5e"].config.currencies.ep.label
-            },
-            {
-                id: "sp",
-                factor: 10,
-                label: game["dnd5e"].config.currencies.sp.label
-            },
-            {
-                id: "cp",
-                factor: 1,
-                label: game["dnd5e"].config.currencies.cp.label
-            }
-        ]
+        let highestConversion = 0;
+        const currencies = CONFIG["DND5E"].currencies as Dnd5eCurrency[]
+        return Object.values(currencies)
+            .sort(
+            (a,b)=>{
+                highestConversion = Math.max(a.conversion,highestConversion)
+                if(b.conversion >a.conversion){ return 1}else{return -1}})
+            .map(c=>{
+                return {id:c.abbreviation,label:c.label,factor:highestConversion/c.conversion}})
     }
 
     get configCanRollAbility():boolean {

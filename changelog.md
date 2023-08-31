@@ -1,3 +1,8 @@
+# 2.0.2
+- adapt to 2.1.4 beavers-systen-interface
+- fix currencies no longer are static but are gathered dynamically via global CONFIG variable.
+- verify for v11
+
 # 2.0.1
 - adapt to 2.1.1 beavers-system-interface
 - return null values on aborted rolls.
