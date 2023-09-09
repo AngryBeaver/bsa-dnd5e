@@ -62,8 +62,9 @@ export class Dnd5e implements SystemApi {
     }
 
     get configAbilities(): AbilityConfig[] {
-        return Object.entries(game["dnd5e"].config.abilities).map(ab => {
-            return {id: ab[0], label: ab[1] as string};
+        return Object.entries(game["dnd5e"].config.abilities).map(([id,value]) => {
+            // @ts-ignore
+            return {id: id, label: value.label};
         });
     }
 

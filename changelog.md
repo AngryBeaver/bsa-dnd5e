@@ -1,3 +1,5 @@
+# 2.0.3
+- dnd5e 2.4 ready 
 # 2.0.2
 - adapt to 2.1.4 beavers-systen-interface
 - fix currencies no longer are static but are gathered dynamically via global CONFIG variable.
