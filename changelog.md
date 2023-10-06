@@ -1,3 +1,5 @@
+# 2.0.4
+- fix currencies partially now works with World Currencies when not converting currencies.
 # 2.0.3
 - dnd5e 2.4 ready 
 # 2.0.2

@@ -70,14 +70,14 @@ export class Dnd5e implements SystemApi {
 
     get configCurrencies(): CurrencyConfig[] {
         let highestConversion = 0;
-        const currencies = CONFIG["DND5E"].currencies as Dnd5eCurrency[]
-        return Object.values(currencies)
+        const currencies = CONFIG["DND5E"].currencies as {[key:string]:Dnd5eCurrency}
+        return Object.entries(currencies)
             .sort(
-            (a,b)=>{
+            ([id,a],[id2,b])=>{
                 highestConversion = Math.max(a.conversion,highestConversion)
                 if(b.conversion >a.conversion){ return 1}else{return -1}})
-            .map(c=>{
-                return {id:c.abbreviation,label:c.label,factor:highestConversion/c.conversion}})
+            .map(([id,c])=>{
+                return {id:id,label:c.label,factor:highestConversion/c.conversion}})
     }
 
     get configCanRollAbility():boolean {
