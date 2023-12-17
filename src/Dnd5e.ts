@@ -53,6 +53,16 @@ export class Dnd5e implements SystemApi {
         tabContent.append(tabBody);
     }
 
+    itemSheetReplaceContent(app, html, element): void {
+        html.find('.sheet-navigation').remove();
+        var properties = html.find('.item-properties').clone();
+        const sheetBody = html.find('.sheet-body');
+        sheetBody.addClass("flexrow");
+        sheetBody.empty();
+        sheetBody.append(properties);
+        sheetBody.append(element);
+    }
+
     get configSkills(): SkillConfig[] {
         return Object.entries(game["dnd5e"].config.skills)
             .map(skills => {
