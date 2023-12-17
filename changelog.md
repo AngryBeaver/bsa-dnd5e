@@ -1,3 +1,5 @@
+# 2.0.5
+- item sheet correction 
 # 2.0.4
 - fix currencies partially now works with World Currencies when not converting currencies.
 # 2.0.3
