@@ -43,7 +43,7 @@ export class Dnd5e implements SystemApi {
         await actor.update({system: {currency: currencies}});
     }
 
-    _actorSheetAddTabLegacy(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string){
+    _actorSheetAddTab3(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string){
         const tabs = $(html).find('.tabs[data-group="primary"]');
         const tabItem = $('<a class="item" data-tab="' + tabData.id + '">' + tabData.html + '</a>');
         tabs.append(tabItem);
@@ -52,7 +52,7 @@ export class Dnd5e implements SystemApi {
         body.append(tabContent);
         tabContent.append(tabBody);
     }
-    _actorSheetAddTab3(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string){
+    _actorSheetAddTabLegacy(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string){
         const tabs = $(html).find('.tabs[data-group="primary"]');
         const tabItem = $('<a class="item" data-tab="' + tabData.id + '">' + tabData.label + '</a>');
         tabs.append(tabItem);
@@ -63,7 +63,7 @@ export class Dnd5e implements SystemApi {
     }
 
     actorSheetAddTab(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string): void {
-        if(game["dnd5e"].version.split(".")>=3){
+        if(game["dnd5e"].version.split(".")[0]>=3){
             this._actorSheetAddTab3(sheet, html, actor, tabData, tabBody);
         }else{
             this._actorSheetAddTabLegacy(sheet, html, actor, tabData, tabBody);
