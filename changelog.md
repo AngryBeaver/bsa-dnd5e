@@ -1,3 +1,5 @@
+# 2.0.6
+- fix for dnd5e 3.x
 # 2.0.5
 - item sheet correction 
 # 2.0.4
