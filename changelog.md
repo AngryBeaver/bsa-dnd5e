@@ -1,3 +1,5 @@
+# 2.1.0
+- add modular tests
 # 2.0.7
 - fix for dnd5e 3.x
 # 2.0.6

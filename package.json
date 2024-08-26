@@ -1,11 +1,10 @@
 {
 	"name": "bsa-dnd5e",
 	"title": "Beaver's System Adaption dnd5e",
-	"version": "2.0.7",
+	"version": "2.1.0",
 	"description": "Beaver's System Adaption dnd5e",
-	"#devDir": "D:\\Vtts\\v10\\Data\\modules",
-	"#devDir": "D:\\Vtts\\v11\\Data\\modules",
-	"devDir": "D:\\Vtts\\v11.315\\Data\\modules",
+	"#devDir": "D:\\Vtts\\v11.315\\Data\\modules",
+	"devDir": "c:\\vtts\\v12.323\\Data\\modules",
 	"main": "src/main.js",
 	"files": [
 		"src/types.ts"

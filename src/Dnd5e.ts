@@ -10,29 +10,17 @@ export class Dnd5e implements SystemApi {
 
     async actorRollSkill(actor, skillId):Promise<Roll|null> {
         let roll = await actor.rollSkill(skillId);
-        return this.fixReadySetRoll(roll);
+        return fixReadySetRoll(roll);
     }
 
     async actorRollAbility(actor, abilityId): Promise<Roll|null> {
         let roll =  await actor.rollAbilityTest(abilityId);
-        return this.fixReadySetRoll(roll);
+        return fixReadySetRoll(roll);
     }
 
     async actorRollTool(actor, item): Promise<Roll|null> {
         let roll = await item.rollToolCheck();
-        return this.fixReadySetRoll(roll);
-    }
-
-    fixReadySetRoll(roll){
-        if(roll === null){
-            return null
-        }
-        if(roll.total === undefined){
-            if(roll.fields !== undefined && roll.fields[2] !== undefined ){
-                roll =  roll.fields[2][1]?.roll
-            }
-        }
-        return roll;
+        return fixReadySetRoll(roll);
     }
 
     actorCurrenciesGet(actor):Currencies {
@@ -122,4 +110,16 @@ export class Dnd5e implements SystemApi {
         return "system.quantity";
     }
 
+}
+
+export function fixReadySetRoll(roll){
+    if(roll === null){
+        return null
+    }
+    if(roll.total === undefined){
+        if(roll.fields !== undefined && roll.fields[2] !== undefined ){
+            roll =  roll.fields[2][1]?.roll
+        }
+    }
+    return roll;
 }

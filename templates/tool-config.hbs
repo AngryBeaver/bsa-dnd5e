@@ -1,0 +1,27 @@
+<form class="items-list" autocomplete="off">
+    <div class="flexrow">
+        {{localize "bsa-dnd5e.tool-config.warn"}}
+    </div>
+    {{#each tools}}
+        <div class="flexrow item">
+            <div class="item-name flexrow clickable" data-id="{{this.uuid}}">
+                <div class="item-image" style="background-image: url('{{this.img}}')"></div>
+                <span>{{this.name}}</span>
+            </div>
+            <div class="action" style="flex:0">
+                <a class="item-delete">
+                    <i class="fas fa-trash" data-id="{{@key}}"></i>
+                </a>
+            </div>
+        </div>
+    {{/each}}
+    <div class="flexrow item">
+        <div class="drop-area" style="align-items: center;display: flex;justify-content: center;height:30px;
+    border: 1px dashed #ffffff;
+    border-radius: 0.25rem;
+    font-family: 'Gelasio';
+    color:white;
+    box-shadow: inset 0 0 10px rgb(0 0 0 / 20%), 0 0 10px rgb(0 0 0 / 20%);">{{localize
+                "bsa-dnd5e.tool-config.dropItem"}}</div>
+    </div>
+</form>
