@@ -45,7 +45,7 @@ class SkillTest implements TestClass<"skill"|"dc"> {
 class SkillTestCustomized implements Test<"skill"|"dc"> {
 
     parent: SkillTest
-    data:{dc:8,skill:""}
+    data = {dc:8,skill:""}
 
     public action = async (initiatorData: InitiatorData):Promise<TestResult> => {
         const actor = beaversSystemInterface.initiator(initiatorData).actor;

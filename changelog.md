@@ -1,3 +1,5 @@
+# 2.1.1
+- fix typo
 # 2.1.0
 - add modular tests
 - it now contains settings for customizing tool tests

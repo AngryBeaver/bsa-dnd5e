@@ -48,7 +48,7 @@ class AbilityTestCustomized implements Test<"ability"|"dc"> {
 
     parent: AbilityTest;
 
-    data:{dc:8,ability:""}
+    data={dc:8,ability:""}
 
     public action = async (initiatorData: InitiatorData):Promise<TestResult> => {
         const actor = beaversSystemInterface.initiator(initiatorData).actor;
