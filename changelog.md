@@ -1,5 +1,6 @@
 # 2.1.0
 - add modular tests
+- it now contains settings for customizing tool tests
 # 2.0.7
 - fix for dnd5e 3.x
 # 2.0.6
