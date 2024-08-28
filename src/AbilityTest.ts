@@ -54,8 +54,8 @@ class AbilityTestCustomized implements Test<"ability"|"dc"> {
         const actor = beaversSystemInterface.initiator(initiatorData).actor;
         const roll = await beaversSystemInterface.actorRollAbility(actor,this.data.ability);
         return {
-            success:(roll>=(this.data.dc||0))?1:0,
-            fail: (roll<(this.data.dc||0))?1:0
+            success:(roll.total>=(this.data.dc||0))?1:0,
+            fail: (roll.total<(this.data.dc||0))?1:0
         }
     }
 
