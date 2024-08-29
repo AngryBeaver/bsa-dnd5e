@@ -7,6 +7,9 @@ link to module
 ````
 https://github.com/AngryBeaver/bsa-dnd5e/releases/latest/download/module.json
 ````
-[system-interface](https://github.com/AngryBeaver/beavers-system-interface)
+## What is this
+This module provides system specifc implementation so that other modules can be written system independent
+when implementing against [beavers-system-interface](https://github.com/AngryBeaver/beavers-system-interface).
 
-[example module](https://github.com/AngryBeaver/beavers-crafting)
+### Example
+[beavers-crafting](https://github.com/AngryBeaver/beavers-crafting)
