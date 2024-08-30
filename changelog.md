@@ -1,3 +1,5 @@
+# 2.1.2
+- fix tool test display
 # 2.1.1
 - fix typo
 # 2.1.0

@@ -74,11 +74,7 @@ class ToolTestCustomized implements Test<"tool"|"dc"> {
         if(!tool){
             return `tool not found`;
         }
-        return `<div class="flexrow item">
-            <div class="item-name flexrow">
-                <div class="item-image" style="background-image: url('${tool.img}')"></div>
-                <span>${tool.text}:dc ${this.data.dc}</span>
-            </div>`;
+        return `<span style="overflow:hidden;text-overflow:ellipsis background-image: url('${tool.img}');background-repeat:no-repeat;padding-left:20px;background-size:20px" >${tool.text}:dc ${this.data.dc}</span>`;
     };
 
 }
