@@ -9,7 +9,7 @@ export class ToolConfig extends FormApplication {
     static get defaultOptions(): any {
         // @ts-ignore
         const title = game.i18n.localize("bsa-dnd5e.tool-config.title");
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             title: title,
             template: "modules/bsa-dnd5e/templates/tool-config.hbs",
             id: "bsa-dnd5e-tool-config",
