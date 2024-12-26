@@ -41,6 +41,10 @@ class AbilityTest implements TestClass<"ability"|"dc"> {
             }
         }
     }
+    readonly renderTypes: Record<"dc"|"ability",TestRenderType> = {
+        ability:"setup",
+        dc: "config"
+    }
 
 }
 

@@ -38,6 +38,11 @@ class ToolTest implements TestClass<"tool"|"dc"> {
         };
     }
 
+    readonly renderTypes: Record<"dc"|"tool",TestRenderType> = {
+        tool:"setup",
+        dc: "config"
+    }
+
 }
 
 class ToolTestCustomized implements Test<"tool"|"dc"> {
@@ -74,7 +79,7 @@ class ToolTestCustomized implements Test<"tool"|"dc"> {
         if(!tool){
             return `tool not found`;
         }
-        return `<span style="overflow:hidden;text-overflow:ellipsis; background-image: url('${tool.img}');background-repeat:no-repeat;padding-left:20px;background-size:20px" >${tool.text}:dc ${this.data.dc}</span>`;
+        return `<span style="overflow:hidden;text-overflow:ellipsis; background-image: url('${tool.img}');background-repeat:no-repeat;padding-left:22px;background-size:20px" >${tool.text}:dc ${this.data.dc}</span>`;
     };
 
 }
@@ -89,7 +94,6 @@ async function getChoices(){
         }catch(e){
             console.warn(`Tool not found ${uuid}`,e);
         }
-
     }
     return choices;
 }

@@ -39,6 +39,10 @@ class SkillTest implements TestClass<"skill"|"dc"> {
             }
         };
     }
+    readonly renderTypes: Record<"dc"|"skill",TestRenderType> = {
+        skill:"setup",
+        dc: "config"
+    }
 
 }
 

@@ -1,7 +1,7 @@
 {
 	"name": "bsa-dnd5e",
 	"title": "Beaver's System Adaptation dnd5e",
-	"version": "2.1.3",
+	"version": "2.1.4",
 	"description": "Beaver's System Adaptation dnd5e",
 	"#devDir": "D:\\Vtts\\v11.315\\Data\\modules",
 	"devDir": "c:\\vtts\\v12.331\\Data\\modules",
@@ -28,7 +28,7 @@
 		"printWidth": 120
 	},
 	"devDependencies": {
-		"beavers-system-interface": "^2.2.0",
+		"beavers-system-interface": "^2.2.2",
 		"@ethaks/fvtt-quench": "^0.6.0",
 		"@league-of-foundry-developers/foundry-vtt-types": "^0.8.8-9",
 		"@types/jest": "^27.4.1",

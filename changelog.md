@@ -1,3 +1,5 @@
+# 2.1.4
+- compatible beavers-interface 2.2.2 
 # 2.1.3
 - fix compatibility warning for v14
 # 2.1.2
