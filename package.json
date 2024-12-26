@@ -4,7 +4,8 @@
 	"version": "2.1.4",
 	"description": "Beaver's System Adaptation dnd5e",
 	"#devDir": "D:\\Vtts\\v11.315\\Data\\modules",
-	"devDir": "c:\\vtts\\v12.331\\Data\\modules",
+	"#devDir": "c:\\vtts\\v12.331\\Data\\modules",
+	"devDir": "c:\\vtts\\v13.333\\Data\\modules",
 	"main": "src/main.js",
 	"files": [
 		"src/types.ts"
