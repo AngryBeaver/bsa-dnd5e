@@ -67,6 +67,9 @@ class ToolTestCustomized implements Test<"tool"|"dc"> {
         // @ts-ignore
         const item = await actorComponent.getEntity()
         let roll = await item.rollToolCheck();
+        if(roll[0]?.total !== undefined){
+            roll = roll[0];
+        }
         roll = fixReadySetRoll(roll);
         return {
             success:roll.total>=this.data.dc?1:0,
