@@ -1,3 +1,6 @@
+# 2.1.6
+- fix tool rolls for dnd5e >= v5
+- fix rendering for dnd5e >= v5
 # 2.1.5
 - fix tool rolls for dnd5e >= v4.1 
 # 2.1.4

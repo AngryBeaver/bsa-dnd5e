@@ -10,16 +10,25 @@ export class Dnd5e implements SystemApi {
 
     async actorRollSkill(actor, skillId):Promise<Roll|null> {
         let roll = await actor.rollSkill(skillId);
+        if(Array.isArray(roll)){
+            roll = roll[0];
+        }
         return fixReadySetRoll(roll);
     }
 
     async actorRollAbility(actor, abilityId): Promise<Roll|null> {
         let roll =  await actor.rollAbilityTest(abilityId);
+        if(Array.isArray(roll)){
+            roll = roll[0];
+        }
         return fixReadySetRoll(roll);
     }
 
     async actorRollTool(actor, item): Promise<Roll|null> {
         let roll = await item.rollToolCheck();
+        if(Array.isArray(roll)){
+            roll = roll[0];
+        }
         return fixReadySetRoll(roll);
     }
 
@@ -32,11 +41,12 @@ export class Dnd5e implements SystemApi {
     }
 
     _actorSheetAddTab3(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string){
+        $(html).find(".beavers-crafting-actor-tab").remove();
         const tabs = $(html).find('.tabs[data-group="primary"]');
-        const tabItem = $('<a class="item" data-tab="' + tabData.id + '">' + tabData.html + '</a>');
+        const tabItem = $('<a class="item beavers-crafting-actor-tab" data-group="primary" data-tab="' + tabData.id + '">' + tabData.html + '</a>');
         tabs.append(tabItem);
         const body = $(html).find(".sheet-body .tab-body");
-        const tabContent = $('<div class="tab" data-group="primary" data-tab="' + tabData.id + '"></div>');
+        const tabContent = $('<div class="tab beavers-crafting-actor-tab" data-group="primary" data-tab="' + tabData.id + '"></div>');
         body.append(tabContent);
         tabContent.append(tabBody);
     }
@@ -58,13 +68,30 @@ export class Dnd5e implements SystemApi {
         }
     }
 
-    itemSheetReplaceContent(app, html, element): void {
+    itemSheetReplaceContent(app, html,element){
+        if(game["dnd5e"].version.split(".")[0]>=5){
+            this.itemSheetReplaceContentV5(app, html, element);
+        }else{
+            this.itemSheetReplaceContentLegacy(app, html, element);
+        }
+    }
+
+    itemSheetReplaceContentLegacy(app, html, element): void {
         html.find('.sheet-navigation').remove();
         var properties = html.find('.item-properties').clone();
         const sheetBody = html.find('.sheet-body');
         sheetBody.addClass("flexrow");
         sheetBody.empty();
         sheetBody.append(properties);
+        sheetBody.append(element);
+    }
+
+    itemSheetReplaceContentV5(app, html, element): void {
+        var header = html.find('.sheet-header').clone();
+        const sheetBody = html.find('.window-content');
+        sheetBody.addClass("flexrow");
+        sheetBody.empty();
+        sheetBody.append(header);
         sheetBody.append(element);
     }
 

@@ -43,7 +43,6 @@ class SkillTest implements TestClass<"skill"|"dc"> {
         skill:"setup",
         dc: "config"
     }
-
 }
 
 class SkillTestCustomized implements Test<"skill"|"dc"> {
