@@ -1,3 +1,5 @@
+# 2.1.7
+- add color schema
 # 2.1.6
 - fix tool rolls for dnd5e >= v5
 - fix rendering for dnd5e >= v5

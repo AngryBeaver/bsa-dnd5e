@@ -1,0 +1,44 @@
+body {
+    --beavers-primary-color: var(--color-text-primary);
+    --beavers-primary-color-highlight: var(--color-text-secondary);
+    --beavers-primary-bg-color: rgba(0, 0, 0, 0.1);
+    --beavers-primary-bg-color-highlight: rgba(0, 0, 0, 0.3);
+    --beavers-secondary-color: #000;
+    --beavers-secondary-color-highlight: var(--color-dark-1);
+
+    --beavers-color: var(--color-dark-4);
+    --beavers-color-highlight: var(--color-dark-3);
+    --beavers-border-color: var(--color-light-1);
+    --beavers-border-color-highlight: #fff;
+    --beavers-header-color:  var(--color-dark-2);
+    --beavers-header-color-highlight: var(--color-dark-1);
+    --beavers-background-color: rgba(0, 0, 0, 0.1);
+    --beavers-background-color-highlight: rgba(0, 0, 0, 0.3);
+
+    --beavers-item-color: #ccc;
+    --beavers-item-color-highlight: #ddd;
+    --beavers-item-border-color: #000;
+    --beavers-item-border-color-highlight: #ccc;
+    --beavers-item-header-color: var(--color-text-primary);
+    --beavers-item-header-color-highlight: var(--color-text-secondary);
+    --beavers-item-background-color: rgba(255, 255, 255, 0.1);
+    --beavers-item-background-color-highlight: rgba(255, 255, 255, 0.2);
+
+    --beavers-chat-color: var(--beavers-color);
+    --beavers-chat-color-highlight: var(--beavers-color-highlight);
+    --beavers-chat-border-color: var(--beavers-border-color);
+    --beavers-chat-border-color-highlight:  var(--beavers-border-color-highlight);
+    --beavers-chat-header-color: var(--beavers-header-color);
+    --beavers-chat-header-color-highlight: var(--color-dark-1);
+    --beavers-chat-background-color: rgba(0, 0, 0, 0.05);
+    --beavers-chat-background-color-highlight: rgba(0, 0, 0, 0.3);
+
+    --beavers-actor-color: #ccc;
+    --beavers-actor-color-highlight: #ddd;
+    --beavers-actor-border-color:  #000;
+    --beavers-actor-border-color-highlight: #ccc;
+    --beavers-actor-header-color: var(--color-text-primary);
+    --beavers-actor-header-color-highlight: var(--color-text-secondary);
+    --beavers-actor-background-color: var(--beavers-background-color);
+    --beavers-actor-background-color-highlight: var(--beavers-background-color-highlight);
+}

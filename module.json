@@ -2,7 +2,7 @@
   "title": "Beaver's System Adaptation dnd5e",
   "description": "dnd5e implementation for Beaver's System Interface",
   "id": "bsa-dnd5e",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "authors": [
     {
       "name": "angryBeaver",
@@ -16,10 +16,11 @@
       "path": "lang/en.json"
     }
   ],
+  "styles": [
+    "css/beavers.css"
+  ],
   "esmodules": [
     "src/main.js"
-  ],
-  "styles": [
   ],
   "packs": [
   ],
