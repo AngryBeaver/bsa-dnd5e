@@ -1,3 +1,5 @@
+# 2.1.8
+- respect dark/light mode schema
 # 2.1.7
 - add color schema
 # 2.1.6
