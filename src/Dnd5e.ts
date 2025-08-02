@@ -9,7 +9,12 @@ export class Dnd5e implements SystemApi {
     }
 
     async actorRollSkill(actor, skillId):Promise<Roll|null> {
-        let roll = await actor.rollSkill(skillId);
+        let roll;
+        if(isGreaterOrEqualThenGameVersion("5.0.4")){
+            roll = await actor.rollSkill({skill:skillId});
+        }else{
+            roll = await actor.rollSkill(skillId);
+        }
         if(Array.isArray(roll)){
             roll = roll[0];
         }
@@ -17,7 +22,12 @@ export class Dnd5e implements SystemApi {
     }
 
     async actorRollAbility(actor, abilityId): Promise<Roll|null> {
-        let roll =  await actor.rollAbilityTest(abilityId);
+        let roll;
+        if(isGreaterOrEqualThenGameVersion("5.0.4")){
+            roll = await actor.rollAbilityCheck({ability:abilityId});
+        }else{
+            roll = await actor.rollAbilityTest(abilityId);
+        }
         if(Array.isArray(roll)){
             roll = roll[0];
         }
@@ -149,4 +159,25 @@ export function fixReadySetRoll(roll){
         }
     }
     return roll;
+}
+
+function isGreaterOrEqualThenGameVersion(version:string){
+    const gameVersion = game["system"].version.split(".");
+    const compareVersion = version.split(".");
+    if(gameVersion[2] > compareVersion[2]){
+        return true;
+    }
+    if(gameVersion[2] < compareVersion[2]){
+        return false;
+    }
+    if(gameVersion[1] > compareVersion[1]){
+        return true;
+    }
+    if(gameVersion[1] < compareVersion[1]){
+        return false;
+    }
+    if(gameVersion[0] >= compareVersion[0]){
+        return true;
+    }
+    return false
 }

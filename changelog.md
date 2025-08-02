@@ -1,3 +1,5 @@
+# 2.1.9
+- fix for dnd5e >= v5.0.4 !!!
 # 2.1.8
 - respect dark/light mode schema
 # 2.1.7
