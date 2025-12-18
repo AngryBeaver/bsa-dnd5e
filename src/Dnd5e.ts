@@ -161,23 +161,22 @@ export function fixReadySetRoll(roll){
     return roll;
 }
 
-function isGreaterOrEqualThenGameVersion(version:string){
-    const gameVersion = game["system"].version.split(".");
-    const compareVersion = version.split(".");
-    if(gameVersion[2] > compareVersion[2]){
-        return true;
+function isGreaterOrEqualThenGameVersion(version: string) {
+    const toNums = (v: string) =>
+        v.split(".").map((x) => {
+            const n = parseInt(x, 10);
+            return Number.isNaN(n) ? 0 : n;
+        });
+
+    const gameParts = toNums(game["system"].version);
+    const targetParts = toNums(version);
+    const len = Math.max(gameParts.length, targetParts.length);
+
+    for (let i = 0; i < len; i++) {
+        const g = gameParts[i] ?? 0;
+        const t = targetParts[i] ?? 0;
+        if (g > t) return true;
+        if (g < t) return false;
     }
-    if(gameVersion[2] < compareVersion[2]){
-        return false;
-    }
-    if(gameVersion[1] > compareVersion[1]){
-        return true;
-    }
-    if(gameVersion[1] < compareVersion[1]){
-        return false;
-    }
-    if(gameVersion[0] >= compareVersion[0]){
-        return true;
-    }
-    return false
+    return true;
 }

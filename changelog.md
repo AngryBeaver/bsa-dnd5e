@@ -1,3 +1,5 @@
+# 2.1.10
+- fix dnd5e version detection bug thx to [Corbeaux12](https://github.com/Corbeaux12)
 # 2.1.9
 - fix for dnd5e >= v5.0.4 !!!
 # 2.1.8
