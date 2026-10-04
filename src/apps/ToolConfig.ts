@@ -36,7 +36,9 @@ export class ToolConfig extends FormApplication {
             this._updateTool();
         });
 
-        const dropFilter = new DragDrop({
+        // @ts-ignore global DragDrop is removed in v15
+        const DragDropImpl = foundry.applications?.ux?.DragDrop?.implementation ?? DragDrop;
+        const dropFilter = new DragDropImpl({
             dropSelector: '.drop-area',
             permissions: {
                 dragstart: this._canDragStart.bind(this),
